@@ -1,0 +1,3 @@
+# Busca Binária
+
+Em construção.
