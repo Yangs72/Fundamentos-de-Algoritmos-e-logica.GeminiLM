@@ -2,74 +2,82 @@
 
 ## Objetivo
 
-Compreender o funcionamento da Busca Binária, seus requisitos, vantagens, limitações e aplicações práticas.
+Entender como funciona a Busca Binária, seus requisitos, vantagens, limitações e aplicações práticas.
 
 ---
 
-## O que é?
+## O que é a Busca Binária?
 
-A Busca Binária é um algoritmo de pesquisa utilizado para localizar um elemento em uma coleção de dados ordenada.
+A Busca Binária é um algoritmo utilizado para localizar um elemento em uma coleção de dados **ordenada**.
 
-Em vez de verificar todos os elementos, o algoritmo reduz pela metade a quantidade de itens analisados a cada etapa, tornando a busca muito mais eficiente.
+Seu princípio é simples: em vez de percorrer todos os elementos da lista, o algoritmo analisa o elemento central e descarta metade dos dados a cada comparação. Essa estratégia reduz significativamente a quantidade de verificações necessárias.
 
 ---
 
 ## Como funciona
 
-O algoritmo segue o seguinte processo:
+O algoritmo segue os seguintes passos:
 
-1. Seleciona o elemento central da lista.
-2. Compara o valor procurado com o elemento central.
-3. Se forem iguais, a busca termina.
-4. Se o valor procurado for menor, continua pesquisando apenas na metade esquerda.
+1. Seleciona o elemento localizado no meio da lista.
+2. Compara esse elemento com o valor procurado.
+3. Se forem iguais, a busca é encerrada.
+4. Se o valor procurado for menor, continua apenas na metade esquerda.
 5. Se for maior, continua apenas na metade direita.
-6. O processo se repete até encontrar o elemento ou concluir que ele não existe.
+6. O processo é repetido até encontrar o elemento ou concluir que ele não está presente.
+
+Essa técnica é conhecida como **Dividir para Conquistar (Divide and Conquer)**.
 
 ---
 
-## Requisito
+## Requisitos
 
-A lista deve estar ordenada.
+Para que a Busca Binária funcione corretamente, os dados precisam estar **ordenados**.
 
-Sem essa condição, a Busca Binária não funciona corretamente.
+Caso contrário, o algoritmo poderá descartar a metade errada da lista e produzir resultados incorretos.
 
 ---
 
 ## Complexidade
 
-| Caso | Complexidade |
-|------|--------------|
-| Melhor caso | O(1) |
-| Caso médio | O(log n) |
-| Pior caso | O(log n) |
+| Situação | Complexidade |
+|----------|--------------|
+| Melhor caso | **O(1)** |
+| Caso médio | **O(log n)** |
+| Pior caso | **O(log n)** |
+
+A complexidade logarítmica faz com que o número de comparações cresça muito lentamente, mesmo quando a quantidade de dados aumenta.
 
 ---
 
 ## Vantagens
 
-- Muito rápida em listas grandes.
-- Reduz significativamente o número de comparações.
-- Excelente desempenho para pesquisas frequentes.
+- Excelente desempenho em listas grandes.
+- Poucas comparações para localizar um elemento.
+- Algoritmo simples e eficiente quando os dados já estão ordenados.
 
 ---
 
 ## Limitações
 
-- Requer que os dados estejam ordenados.
-- Não é a melhor opção para listas pequenas.
-- Inserções e remoções frequentes podem exigir nova ordenação.
+- Só funciona corretamente com dados ordenados.
+- Se a coleção sofre muitas inserções e remoções, manter a ordenação pode gerar um custo adicional.
+- Para listas pequenas, o ganho de desempenho pode ser pouco significativo.
 
 ---
 
-## Aplicações
+## Exemplo intuitivo
 
-A Busca Binária é utilizada em diversos contextos, como:
+Imagine que você precisa adivinhar um número entre **1 e 100**.
 
-- pesquisa em bancos de dados;
-- busca em listas ordenadas;
-- sistemas de recomendação;
-- otimizações em algoritmos;
-- bibliotecas de programação.
+Na busca linear você começaria por 1, depois 2, depois 3...
+
+Na Busca Binária, o primeiro palpite seria **50**.
+
+Se o número procurado for menor, todas as opções acima de 50 são descartadas.
+
+Se for maior, todas as opções abaixo de 50 deixam de ser consideradas.
+
+A cada tentativa, metade das possibilidades é eliminada.
 
 ---
 
@@ -86,9 +94,8 @@ def busca_binaria(lista, alvo):
         if lista[meio] == alvo:
             return meio
 
-        elif lista[meio] < alvo:
+        if lista[meio] < alvo:
             esquerda = meio + 1
-
         else:
             direita = meio - 1
 
@@ -97,14 +104,26 @@ def busca_binaria(lista, alvo):
 
 ---
 
+## Aplicações
+
+A Busca Binária é utilizada em diversos contextos, como:
+
+- Pesquisa em listas ordenadas.
+- Bancos de dados.
+- Sistemas de busca.
+- Bibliotecas de programação.
+- Algoritmos de otimização.
+
+---
+
 ## O que aprendi
 
-A Busca Binária é muito mais eficiente do que a Busca Linear quando os dados estão ordenados.
+A Busca Binária demonstra como a escolha do algoritmo influencia diretamente o desempenho de um programa.
 
-Seu desempenho cresce de forma logarítmica, tornando-a uma das técnicas fundamentais para o desenvolvimento de algoritmos eficientes.
+Ao eliminar metade dos elementos a cada comparação, ela consegue localizar informações de forma muito mais eficiente do que uma busca sequencial, desde que os dados estejam ordenados.
 
 ---
 
 ## Referências
 
-Este conteúdo foi produzido com base na base de conhecimento construída no NotebookLM e revisado pelo autor para fins de estudo.
+Este conteúdo foi elaborado a partir dos estudos realizados no NotebookLM e revisado pelo autor para fins educacionais.
